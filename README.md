@@ -1,5 +1,5 @@
 # logica-e-algoritmos
-Primeiro repositório de Git e GitHub
+Primeiro repositório de Git e GitHub.
 Este repositorio reune meus estudos e exercicios de logica de programacao, desenvolvidos durante minha formacao em Ciencia da Computacao na UESB.
 
 ## Objetivos
