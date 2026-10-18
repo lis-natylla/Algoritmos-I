@@ -1,0 +1,23 @@
+#include<iostream>
+
+using namespace std;
+
+int main()
+{
+    int resultado = 1;
+    int contador = 1;
+    int base, expoente;
+    
+    cout<< "digite a base:"<< endl;
+    cin>> base;
+    
+    cout<< "digite o expoente: "<< endl;
+    cin>> expoente;
+    
+    while (contador<= expoente){
+        resultado = resultado*base;
+        contador++;
+    }
+    cout<< "o resultado é: "<< resultado<< endl;
+    return 0;
+}

@@ -1,0 +1,41 @@
+#include <iostream>
+
+using namespace std;
+
+double media(int a, int b, int c, int d){
+    return (a+b+c+d)/4;
+}
+
+float media(float a, float b, float c){
+    return (a+b+c)/3;
+}
+
+double media(double a, double b){
+    return (a+b)/2;
+}
+
+int main(){
+    int i1, i2, i3, i4;
+    float f1, f2, f3;
+    double d1, d2;
+
+    cout<< "digite 4 numeros inteiros: ";
+    cin>> i1 >> i2 >> i3 >> i4;
+
+    cout<< "(letra A): media de 4 inteiros" <<endl;
+    cout<< "resultado: "<< media(i1,i2,i3,i4) <<endl;
+
+    cout<< "\ndigite 3 numeros do tipo float: ";
+    cin>> f1 >> f2 >> f3;
+
+    cout<< "(letra B): media de 3 floats"<<endl;
+    cout<< "resultado: " << media(f1,f2,f3)<<endl;
+
+    cout<< "\ndigite 2 numeros do tipo double: ";
+    cin>> d1 >> d2;
+
+    cout<< "(letra C): media de 2 doubles"<<endl;
+    cout<< "resultado: " << media(d1, d2) <<endl;
+
+    return 0;
+}

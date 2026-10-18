@@ -1,0 +1,34 @@
+#include<iostream>
+
+using namespace std;
+
+int main()
+{
+    int n, i = 0;
+    int soma = 0;
+    int idade;
+    float media;
+    
+    cout<< "Quantas pessoas?"<<endl;
+    cin>> n;
+    
+    do {
+        cout<< "Digite a idade da pessoa "<< i +1 << " : "<< endl;
+        cin>> idade;
+        soma += idade;
+        i++;
+    } while (i<n);
+    
+    media = soma/n;
+    
+    cout<< "A média das idades é: "<< media << endl;
+    
+    if (media>= 0 && media<= 25){
+        cout<< "Turma Jovem"<< endl;
+    } else if (media<= 60){
+        cout<< "Turma adulta"<< endl;
+    } else{
+        cout<< "Turma idosa"<< endl;
+    }
+    return 0;
+}

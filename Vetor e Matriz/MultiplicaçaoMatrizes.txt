@@ -1,0 +1,58 @@
+#include <iostream>
+#include <cstdlib>
+#include <ctime>
+#include <iomanip>
+
+using namespace std;
+	
+int main() {
+	int matrizA[5][3], matrizB[3][7], matrizC[5][7];  
+	srand(time(0)); 
+	
+	for (int i=0; i<5; i++){
+		for (int j=0; j<7;j++){
+			matrizC[i][j]= 0;
+		}
+	}
+	for (int i=0; i<5; i++){ 
+		for (int j=0; j<3; j++){
+			matrizA[i][j]=rand()%10;
+		}
+	}
+	for(int i=0; i<3; i++){ 
+		for(int j=0; j<7; j++){
+			matrizB[i][j]=rand()%10;
+		}
+	}
+	
+	cout << "Matriz A\n"<<endl;
+    for (int i=0; i<5; i++){
+    	for (int j=0; j<3; j++){
+    		cout << setw(4) <<left << matrizA[i][j] ;
+		}
+		cout << endl;
+	}
+	cout << "\nMatriz B\n"<<endl;
+	 for (int i=0; i<3; i++){
+    	for (int j=0; j<7; j++){
+    		cout << setw(4) << left<< matrizB[i][j];
+		}
+		cout << endl;
+	}
+	
+	for (int i=0; i<5; i++){
+		for (int j=0; j<7; j++){
+		    for (int n=0; n<3; n++){
+		        matrizC[i][j] += matrizA[i][n] * matrizB[n][j];
+		    }
+		}
+	}
+	cout << "\nMatriz C (resultado):\n"<<endl;
+	 for (int i=0; i<5; i++){
+    	for (int j=0; j<7; j++){
+    		cout << setw(4) << left<< matrizC[i][j]<<" ";
+		}
+		cout << endl;
+	}
+    return 0;
+}

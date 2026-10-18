@@ -1,0 +1,90 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+
+    char sexo;
+    int quantidade, idade;
+    int somaIdades = 0, somaMulheres = 0, somaHomens = 0;
+    int qtdMulheres = 0, qtdHomens = 0;
+    int faixa1 = 0, faixa2 = 0, faixa3 = 0, faixa4 = 0, faixa5 = 0;
+    int mulheresFaixa2 = 0;
+    float mediaTotal, mediaMulheres, mediaHomens, porcentagemMulheresFaixa2;
+
+    cout << "Digite a quantidade de pessoas entrevistadas: ";
+    cin >> quantidade;
+
+    for (int i = 1; i <= quantidade; i++) {
+
+        cout << "\nPessoa " << i << endl;
+        
+        cout << "Idade: ";
+        cin >> idade;
+
+        cout << "Sexo (M/F): ";
+        cin >> sexo;
+
+        somaIdades = somaIdades + idade;
+
+        if (sexo == 'F' || sexo == 'f') {
+            somaMulheres = somaMulheres + idade;
+            qtdMulheres++;
+
+            if (idade >= 16 && idade <= 30) {
+                mulheresFaixa2++;
+            }
+
+        } else if (sexo == 'M' || sexo == 'm') {
+            somaHomens = somaHomens + idade;
+            qtdHomens++;
+        }
+
+        if (idade <= 15) {
+            faixa1++;
+        }
+        else if (idade >= 16 && idade <= 30) {
+            faixa2++;
+        }
+        else if (idade >= 31 && idade <= 45) {
+            faixa3++;
+        }
+        else if (idade >= 46 && idade <= 60) {
+            faixa4++;
+        }
+        else {
+            faixa5++;
+        }
+    }
+
+    mediaTotal = (float)somaIdades / quantidade;
+
+    if (qtdMulheres > 0) {
+        mediaMulheres = (float)somaMulheres / qtdMulheres;
+    } else {
+        mediaMulheres = 0;
+    }
+
+    if (qtdHomens > 0) {
+        mediaHomens = (float)somaHomens / qtdHomens;
+    } else {
+        mediaHomens = 0;
+    }
+
+    porcentagemMulheresFaixa2 = ((float)mulheresFaixa2 / quantidade) * 100;
+
+    cout << "Media de idade das pessoas: " << mediaTotal << endl;
+    cout << "Media de idade das mulheres: " << mediaMulheres << endl;
+    cout << "Media de idade dos homens: " << mediaHomens << endl;
+    
+    cout << "\nQuantidade por faixa etaria:" << endl;
+    cout << "Faixa 1 (ate 15 anos): " << faixa1 << endl;
+    cout << "Faixa 2 (16 a 30 anos): " << faixa2 << endl;
+    cout << "Faixa 3 (31 a 45 anos): " << faixa3 << endl;
+    cout << "Faixa 4 (46 a 60 anos): " << faixa4 << endl;
+    cout << "Faixa 5 (acima de 60 anos): " << faixa5 << endl;
+    
+    cout << "\nPorcentagem de mulheres da segunda faixa etaria: ";
+    cout << porcentagemMulheresFaixa2 << "%" << endl;
+
+    return 0;
+}

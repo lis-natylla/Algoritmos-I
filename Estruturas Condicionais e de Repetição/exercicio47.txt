@@ -1,0 +1,25 @@
+#include<iostream>
+
+using namespace std;
+
+int main()
+{
+    int n;
+    cout<<"Digite a quantidade de termos desejada:"<<endl;
+    cin>> n;
+    
+    int a = 1, b = 1, contador = 1;
+    
+    cout<< "A sequencia com " << n << " termos é: "<<endl;
+    
+    while(contador<= n){
+        cout<< a << " ";
+        
+        int proximoTermo = a+b;
+        a = b;
+        b = proximoTermo;
+        
+        contador ++;
+    }
+    return 0;
+}

@@ -1,0 +1,40 @@
+#include <iostream>
+using namespace std;
+int main(){
+    double dinheiro, total, troco, preco;
+    int produto;
+    
+    do {
+        cout<< "Lojas Tabajara "<< endl;
+        produto = 1;
+        total = 0;
+        
+        do {
+            cout<< "produto  "<< produto<< " (R$): ";
+            cin >> preco;
+            
+            if (preco != 0){
+		total += preco;
+            	produto ++;
+           }
+
+        } while (preco != 0);
+
+        cout << "O total da compra é: "<< total << " R$"<< endl;
+        
+        cout<< "Dinheiro (R$):";
+        cin>> dinheiro;
+        
+        troco = dinheiro - total;
+        
+        if (troco < 0){
+            cout<< "Dinheiro insuficiente! Não é possível realizar a compra!"<<endl;
+        } else{
+        cout<< " O troco é: " << troco<< " R$" << endl;
+        }
+        cout<< endl;
+        
+    } while (true);
+    
+    return 0;
+}

@@ -1,0 +1,142 @@
+#include <iostream>
+#include <cstdlib>
+#include <ctime>
+
+using namespace std;
+
+void mostrarPratos(char pratos[][30], int quantidade[]);
+int escolherPrato(int quantidade[]);
+void jogarDados(int &brindes);
+float calcularAluguel(int pessoas);
+
+int main(){
+    srand(time(0));
+    int brindes = 0;
+    char jogar;
+    char pratos[10][30] ={"Pipoca","Quentao", "Pacoca", "Amendoim", "Caldo", "Canjica","Milho cozido", "Mingau","Cha de amendoim", "Licor"};
+
+    int quantidade[10] = {36,17,10,35,50,10,35,8,30,10};
+    int pessoas = 0, opcao;
+    float vaquinha = 0, doacao;
+
+    do{
+        if(pessoas==242){
+            cout<<"\nnao ha mais vagas para a festa\n";
+            break;
+        }
+        cout<<"1 - inscrever pessoa\n";
+        cout<<"2 - encerrar inscricoes\n";
+        cout<<"Opcao: ";
+        cin>>opcao;
+
+        if (opcao!=1 && opcao!=2){
+            cout<< "opcao invalida"<<endl;
+            cout<<endl;
+        } else if(opcao==1){
+            pessoas++;
+            cout<<"\n presenca confirmada\n";
+            cout<<" pessoa numero "<<pessoas<<"\n";
+
+            cout<<"\n informe o valor da doacao: R$ ";
+            cin>>doacao;
+            vaquinha += doacao;
+
+            mostrarPratos(pratos, quantidade);
+            int prato = escolherPrato(quantidade);
+            cout<<"\n prato escolhido: "<<pratos[prato]<<endl;
+
+            cout<<"\nDeseja jogar os dados? (S/N): ";
+            cin>>jogar;
+
+            if(jogar=='S' || jogar=='s'){
+                jogarDados(brindes);
+            }
+        }
+    } while(opcao!=2);
+
+    float aluguel = calcularAluguel(pessoas);
+
+    cout<<"inscriçoes encerradas\n";
+    cout<<"pessoas confirmadas: "<<pessoas<<endl;
+    cout<<"valor arrecadado: R$ "<<vaquinha<<endl;
+    cout<<"valor do aluguel: R$ "<<aluguel<<endl;
+    cout<<"total de brindes distribuidos: "<<brindes<<endl;
+
+    if(vaquinha > aluguel){
+        cout<<"\n teve lucro de R$ "<<vaquinha-aluguel<<endl;
+    } else if(vaquinha < aluguel){
+        cout<<"\n teve prejuizo de R$ "<<aluguel-vaquinha<<endl;
+    } else{
+        cout<<"\n a vaquinha cobriu exatamente o aluguel \n";
+    }
+
+    return 0;
+}
+
+void mostrarPratos(char pratos[][30], int quantidade[]){
+    cout<<"\npratos disponiveis:\n";
+
+    for(int i=0; i<10; i++){
+        if(quantidade[i]>0){
+            cout<< i+1 << "  "<< pratos [i]<< " (" <<quantidade[i]<< " restantes) " <<endl;
+        }
+    }
+}
+
+
+int escolherPrato(int quantidade[]){
+    int prato;
+
+    do{
+        cout<<"\nescolha um prato: ";
+        cin>>prato;
+
+        prato--;
+
+        if(prato<0 || prato>9){
+            cout<<"opcao invalida!\n";
+        }
+        else if(quantidade[prato]==0){
+            cout<<"esse prato ja acabou :/ \n";
+        }
+
+    }while(prato<0 || prato>9 || quantidade[prato]==0);
+
+    quantidade[prato] --;
+
+    return prato;
+}
+void jogarDados(int &brindes){
+    int dado1, dado2, soma;
+    srand(time(0));
+
+    dado1 = rand()%6 + 1;
+    dado2 = rand()%6 + 1;
+
+    soma = dado1 + dado2;
+
+    cout<<"\nDado 1: "<<dado1<<endl;
+    cout<<"Dado 2: "<<dado2<<endl;
+    cout<<"Soma: "<<soma<<endl;
+
+    if(soma >= 10){
+        cout<<"parabens! voce ganhou um brinde\n";
+        brindes++;
+    } else{
+        cout<<"que pena! desta vez voce nao ganhou\n";
+    }
+}
+
+float calcularAluguel(int pessoas){
+    if(pessoas<=20){
+        return 200;
+    } else if(pessoas<=80){
+        return 400;
+    } else if(pessoas<=150){
+        return 600;
+    } else if(pessoas<=200){
+        return 800;
+    } else{
+        return 1000;
+    }
+}

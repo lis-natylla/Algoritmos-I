@@ -1,0 +1,126 @@
+#include <iostream>
+#include <cstdlib>
+#include <ctime>
+
+using namespace std;
+
+int main() {
+
+    srand(time(0));
+
+    int curso, idade;
+
+    int qtd_engenharia = 0,
+        qtd_computacao = 0,
+        qtd_matematica = 0;
+
+    int engenharia20_25 = 0,
+        computacao20_25 = 0,
+        matematica20_25 = 0;
+
+    int somaEngenharia = 0,
+        somaComputacao = 0,
+        somaMatematica = 0;
+
+    int maiorIdade = 0;
+    int cursoMaisVelho = 0;
+
+    float mediaEngenharia,
+          mediaComputacao,
+          mediaMatematica;
+
+    for (int i = 1; i <= 500; i++) {
+
+        curso = rand() % 3 + 1; 
+        idade = rand() % 67 + 14; //idade entre 14 e 80 anos
+
+        if (curso == 1) {
+            qtd_engenharia++;
+            somaEngenharia += idade;
+
+            if (idade >= 20 && idade <= 25) {
+                engenharia20_25++;
+            }
+        }
+        else if (curso == 2) {
+            qtd_computacao++;
+            somaComputacao += idade;
+
+            if (idade >= 20 && idade <= 25) {
+                computacao20_25++;
+            }
+        }
+
+        else {
+            qtd_matematica++;
+            somaMatematica += idade;
+
+            if (idade >= 20 && idade <= 25) {
+
+                matematica20_25++;
+            }
+        }
+        if (idade > maiorIdade) {
+            maiorIdade = idade;
+            cursoMaisVelho = curso;
+        }
+    }
+    mediaEngenharia = (float)somaEngenharia / qtd_engenharia;
+    mediaComputacao = (float)somaComputacao / qtd_computacao;
+    mediaMatematica = (float)somaMatematica / qtd_matematica;
+
+    // a)
+    cout << "\nQuantidade de alunos por curso:" << endl;
+
+    cout << "Engenharia: "
+         << qtd_engenharia << endl;
+
+    cout << "Computacao: "
+         << qtd_computacao << endl;
+
+    cout << "Matematica: "
+         << qtd_matematica << endl;
+
+    // b)
+    cout << "\nQuantidade de alunos entre 20 e 25 anos:"<< endl;
+    cout << "Engenharia: "<< engenharia20_25 << endl;
+    cout << "Computacao: "<< computacao20_25 << endl;
+    cout << "Matematica: "<< matematica20_25 << endl;
+
+    // c)
+    cout << "\nAluno mais velho:" << endl;
+
+    if (cursoMaisVelho == 1) {
+        cout << "Curso: Engenharia" << endl;
+    }
+
+    else if (cursoMaisVelho == 2) {
+        cout << "Curso: Computacao" << endl;
+    }
+
+    else {
+        cout << "Curso: Matematica" << endl;
+    }
+
+    cout << "Idade: "<< maiorIdade << endl;
+
+    // d)
+cout << "\nCurso com menor media de idade:"<< endl;
+
+if (mediaEngenharia < mediaComputacao && mediaEngenharia < mediaMatematica) {
+
+    cout << "Engenharia" << endl;
+    cout << "Media: " << mediaEngenharia << endl;
+}
+
+else if (mediaComputacao < mediaEngenharia && mediaComputacao < mediaMatematica) {
+    cout << "Computacao" << endl;
+    cout << "Media: " << mediaComputacao << endl;
+}
+
+else {
+    cout << "Matematica" << endl;
+    cout << "Media: " << mediaMatematica << endl;
+}
+    return 0;
+}

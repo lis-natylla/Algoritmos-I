@@ -1,0 +1,79 @@
+#include <iostream>
+#include <cstdlib>
+#include <ctime>
+
+using namespace std;
+
+int main() {
+
+    bool jogo[3][3];
+
+    srand(time(0));
+
+    for (int i = 0; i < 3; i++) {
+        for (int j = 0; j < 3; j++) {
+            jogo[i][j] = rand() % 2;
+
+            if (jogo[i][j]) {
+                cout << "X ";
+            } else {
+                cout << "O ";
+            }
+        }
+        cout << endl;
+    }
+
+    bool jogadorX = false, jogadorO = false;
+
+    for (int i = 0; i < 3; i++) {
+        if (jogo[i][0] && jogo[i][1] && jogo[i][2]) {
+            jogadorX = true;
+        }
+        
+        if (!jogo[i][0] && !jogo[i][1] && !jogo[i][2]) {
+            jogadorO = true;
+        }
+    }
+
+    for (int j = 0; j < 3; j++) {
+        if (jogo[0][j] && jogo[1][j] && jogo[2][j]) {
+            jogadorX = true;
+        }
+            if (!jogo[0][j] && !jogo[1][j] && !jogo[2][j]){
+            jogadorO = true;
+        }
+    }
+    
+    //diagonal principal:
+    if (jogo[0][0] && jogo[1][1] && jogo[2][2]) {
+        jogadorX = true;
+    }
+
+    if (!jogo[0][0] && !jogo[1][1] && !jogo[2][2]) {
+        jogadorO = true;
+    }
+    
+    //diagonal secundária:
+    if (jogo[0][2] && jogo[1][1] && jogo[2][0]) {
+        jogadorX = true;
+    }
+
+    if (!jogo[0][2] && !jogo[1][1] && !jogo[2][0]) {
+        jogadorO = true;
+    }
+    cout << endl;
+
+    if (jogadorX) {
+        cout << " o X ganhou" << endl;
+    }
+
+    if (jogadorO) {
+        cout << "o O ganhou" << endl;
+    }
+
+    if (!jogadorX && !jogadorO) {
+        cout << "Ninguem ganhou" << endl;
+    }
+
+    return 0;
+}
