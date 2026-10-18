@@ -2,8 +2,6 @@ Este repositorio acompanha minha evolucao na programacao e na resolucao de probl
 
 Conteúdos:
 Lógica de programação;
-
 Estruturas condicionais e de repetição;
-
 Funções, vetores e matrizes;
 
